@@ -11,8 +11,8 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useAuth } from '../../context/AuthContext';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('admin@foxtech.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -96,11 +96,7 @@ const Login: React.FC = () => {
             </Button>
           </form>
 
-          <Box sx={{ mt: 3, p: 2, borderRadius: 2, bgcolor: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.2)' }}>
-            <Typography sx={{ color: '#94a3b8', fontSize: 12, textAlign: 'center' }}>
-              Default: <strong style={{ color: '#60a5fa' }}>admin@foxtech.com</strong> / <strong style={{ color: '#60a5fa' }}>admin123</strong>
-            </Typography>
-          </Box>
+
         </CardContent>
       </Card>
     </Box>
