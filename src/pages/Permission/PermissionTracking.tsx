@@ -128,7 +128,7 @@ const PermissionTracking: React.FC = () => {
         <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
           <Grid container spacing={2}>
             {isAdmin && (
-              <Grid item xs={12} sm={5}>
+              <Grid size={{ xs: 12, sm: 5 }}>
                 <FormControl fullWidth size="small">
                   <InputLabel>Staff</InputLabel>
                   <Select value={filterStaff} label="Staff" onChange={e => { setFilterStaff(e.target.value); setPage(1); }}>
@@ -138,7 +138,7 @@ const PermissionTracking: React.FC = () => {
                 </FormControl>
               </Grid>
             )}
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
               <TextField fullWidth size="small" label="Month" type="month" value={filterMonth}
                 onChange={e => { setFilterMonth(e.target.value); setPage(1); }}
                 slotProps={{ inputLabel: { shrink: true } }} />
@@ -229,7 +229,7 @@ const PermissionTracking: React.FC = () => {
 
       {/* Add/Edit Dialog */}
       <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} maxWidth="sm" fullWidth
-        PaperProps={{ sx: { borderRadius: 3 } }}>
+        slotProps={{ paper: { sx: { borderRadius: 3 } } }}>
         <DialogTitle sx={{ fontWeight: 700, fontSize: 18, pb: 1 }}>
           {editingId ? 'Edit Permission Entry' : 'Add Permission Entry'}
           <Typography sx={{ fontSize: 13, color: '#94a3b8', fontWeight: 400 }}>
@@ -240,7 +240,7 @@ const PermissionTracking: React.FC = () => {
           {formError && <Alert severity="error" sx={{ mb: 2 }}>{formError}</Alert>}
           <Grid container spacing={2}>
             {isAdmin && (
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <FormControl fullWidth>
                   <InputLabel>Staff Member *</InputLabel>
                   <Select value={form.staffId} label="Staff Member *" onChange={e => setForm({ ...form, staffId: e.target.value })}>
@@ -249,16 +249,16 @@ const PermissionTracking: React.FC = () => {
                 </FormControl>
               </Grid>
             )}
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField fullWidth label="Date *" type="date" value={form.date}
                 onChange={e => setForm({ ...form, date: e.target.value })} slotProps={{ inputLabel: { shrink: true } }} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField fullWidth label="Hours *" type="number" value={form.hours}
-                inputProps={{ min: 0.5, max: 12, step: 0.5 }}
+                slotProps={{ htmlInput: { min: 0.5, max: 12, step: 0.5 } }}
                 onChange={e => setForm({ ...form, hours: e.target.value })} placeholder="e.g. 1.5" />
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TextField fullWidth label="Reason" multiline rows={2} value={form.reason}
                 onChange={e => setForm({ ...form, reason: e.target.value })} />
             </Grid>
@@ -275,7 +275,7 @@ const PermissionTracking: React.FC = () => {
 
       {/* Delete Confirm Dialog */}
       <Dialog open={deleteDialogOpen} onClose={() => setDeleteDialogOpen(false)} maxWidth="xs" fullWidth
-        PaperProps={{ sx: { borderRadius: 3 } }}>
+        slotProps={{ paper: { sx: { borderRadius: 3 } } }}>
         <DialogTitle sx={{ fontWeight: 700 }}>Delete Permission Record?</DialogTitle>
         <DialogContent>
           <Typography sx={{ color: '#475569' }}>This will permanently delete the permission record. This action cannot be undone.</Typography>

@@ -84,23 +84,23 @@ const Reports: React.FC = () => {
             <FilterListIcon sx={{ color: '#2563eb' }} />
             <Typography sx={{ fontWeight: 600 }}>Filter Reports</Typography>
           </Box>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} sm={6} md={2}>
+          <Grid container spacing={2} sx={{ alignItems: 'center' }}>
+            <Grid size={{ xs: 12, sm: 6, md: 2 }}>
               <TextField fullWidth size="small" label="From Date" type="date"
                 value={filters.fromDate} onChange={e => setFilters({ ...filters, fromDate: e.target.value })}
                 slotProps={{ inputLabel: { shrink: true } }} />
             </Grid>
-            <Grid item xs={12} sm={6} md={2}>
+            <Grid size={{ xs: 12, sm: 6, md: 2 }}>
               <TextField fullWidth size="small" label="To Date" type="date"
                 value={filters.toDate} onChange={e => setFilters({ ...filters, toDate: e.target.value })}
                 slotProps={{ inputLabel: { shrink: true } }} />
             </Grid>
-            <Grid item xs={12} sm={6} md={2}>
+            <Grid size={{ xs: 12, sm: 6, md: 2 }}>
               <TextField fullWidth size="small" label="Month" type="month"
                 value={filters.month} onChange={e => setFilters({ ...filters, month: e.target.value })}
                 slotProps={{ inputLabel: { shrink: true } }} />
             </Grid>
-            <Grid item xs={12} sm={6} md={2}>
+            <Grid size={{ xs: 12, sm: 6, md: 2 }}>
               <FormControl fullWidth size="small">
                 <InputLabel>Staff</InputLabel>
                 <Select value={filters.staffId} label="Staff" onChange={e => setFilters({ ...filters, staffId: e.target.value })}>
@@ -109,7 +109,7 @@ const Reports: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6} md={2}>
+            <Grid size={{ xs: 12, sm: 6, md: 2 }}>
               <FormControl fullWidth size="small">
                 <InputLabel>Department</InputLabel>
                 <Select value={filters.department} label="Department" onChange={e => setFilters({ ...filters, department: e.target.value })}>
@@ -118,7 +118,7 @@ const Reports: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6} md={2}>
+            <Grid size={{ xs: 12, sm: 6, md: 2 }}>
               <Button fullWidth variant="contained" onClick={handleApply}>Apply Filters</Button>
             </Grid>
           </Grid>

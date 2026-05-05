@@ -73,19 +73,21 @@ const Login: React.FC = () => {
               fullWidth label="Email" type="email" value={email}
               onChange={(e) => setEmail(e.target.value)} required
               sx={{ mb: 2, '& .MuiOutlinedInput-root': { color: '#f1f5f9', '& fieldset': { borderColor: '#334155' }, '&:hover fieldset': { borderColor: '#2563eb' } }, '& .MuiInputLabel-root': { color: '#64748b' } }}
-              InputProps={{ startAdornment: <InputAdornment position="start"><EmailIcon sx={{ color: '#64748b' }} /></InputAdornment> }}
+              slotProps={{ input: { startAdornment: <InputAdornment position="start"><EmailIcon sx={{ color: '#64748b' }} /></InputAdornment> } }}
             />
             <TextField
               fullWidth label="Password" type={showPassword ? 'text' : 'password'}
               value={password} onChange={(e) => setPassword(e.target.value)} required
               sx={{ mb: 3, '& .MuiOutlinedInput-root': { color: '#f1f5f9', '& fieldset': { borderColor: '#334155' }, '&:hover fieldset': { borderColor: '#2563eb' } }, '& .MuiInputLabel-root': { color: '#64748b' } }}
-              InputProps={{
-                startAdornment: <InputAdornment position="start"><LockIcon sx={{ color: '#64748b' }} /></InputAdornment>,
-                endAdornment: <InputAdornment position="end">
-                  <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: '#64748b' }}>
-                    {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                  </IconButton>
-                </InputAdornment>,
+              slotProps={{
+                input: {
+                  startAdornment: <InputAdornment position="start"><LockIcon sx={{ color: '#64748b' }} /></InputAdornment>,
+                  endAdornment: <InputAdornment position="end">
+                    <IconButton onClick={() => setShowPassword(!showPassword)} sx={{ color: '#64748b' }}>
+                      {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                    </IconButton>
+                  </InputAdornment>,
+                }
               }}
             />
             <Button fullWidth type="submit" variant="contained" size="large" disabled={loading}

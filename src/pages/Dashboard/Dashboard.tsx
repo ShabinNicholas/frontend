@@ -66,15 +66,15 @@ const Dashboard: React.FC = () => {
 
       {/* Stat Cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <StatCard title="Total Staff" value={stats?.totalStaff ?? 0} icon={<PeopleIcon />}
             color="#2563eb" bg="#eff6ff" subtitle="Active employees" loading={loading} />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <StatCard title="Leaves This Month" value={stats?.leavesThisMonth ?? 0} icon={<EventNoteIcon />}
             color="#7c3aed" bg="#f5f3ff" subtitle={`In ${monthName}`} loading={loading} />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <StatCard title="Permission Hours" value={`${(stats?.permHoursThisMonth ?? 0).toFixed(1)}h`} icon={<AccessTimeIcon />}
             color="#059669" bg="#ecfdf5" subtitle={`In ${monthName}`} loading={loading} />
         </Grid>
@@ -93,7 +93,7 @@ const Dashboard: React.FC = () => {
               { label: 'Leaves Taken', val: stats?.leavesThisMonth ?? 0, color: '#7c3aed' },
               { label: 'Permission Hours', val: `${(stats?.permHoursThisMonth ?? 0).toFixed(1)} hrs`, color: '#059669' },
             ].map((item) => (
-              <Grid item xs={12} sm={4} key={item.label}>
+              <Grid size={{ xs: 12, sm: 4 }} key={item.label}>
                 <Box sx={{ p: 2, borderRadius: 3, bgcolor: '#f8fafc', border: '1px solid #e2e8f0', textAlign: 'center' }}>
                   {loading ? <Skeleton width="60%" sx={{ mx: 'auto' }} /> : (
                     <Typography variant="h5" sx={{ fontWeight: 700, color: item.color }}>{item.val}</Typography>

@@ -182,16 +182,16 @@ const LeaveManagement: React.FC = () => {
 
       {/* Stats Row */}
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={6} sm={3}>
+        <Grid size={{ xs: 6, sm: 3 }}>
           <StatCard icon={<CalendarMonthIcon />} label="Total Leaves" value={stats.total} color="#3b82f6" />
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid size={{ xs: 6, sm: 3 }}>
           <StatCard icon={<PendingActionsIcon />} label="Pending" value={stats.pending} color="#f59e0b" />
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid size={{ xs: 6, sm: 3 }}>
           <StatCard icon={<CheckCircleOutlineIcon />} label="Approved" value={stats.approved} color="#10b981" />
         </Grid>
-        <Grid item xs={6} sm={3}>
+        <Grid size={{ xs: 6, sm: 3 }}>
           <StatCard icon={<WbSunnyIcon />} label="Half Days" value={stats.halfDay} color="#8b5cf6" />
         </Grid>
       </Grid>
@@ -199,9 +199,9 @@ const LeaveManagement: React.FC = () => {
       {/* Filters */}
       <Card sx={{ mb: 2, borderRadius: 3, border: '1px solid #e2e8f0', boxShadow: 'none' }}>
         <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
-          <Grid container spacing={2} alignItems="center">
+          <Grid container spacing={2} sx={{ alignItems: 'center' }}>
             {isAdmin && (
-              <Grid item xs={12} sm={4}>
+              <Grid size={{ xs: 12, sm: 4 }}>
                 <FormControl fullWidth size="small">
                   <InputLabel>Staff</InputLabel>
                   <Select value={filterStaff} label="Staff" onChange={e => { setFilterStaff(e.target.value); setPage(1); }}>
@@ -211,7 +211,7 @@ const LeaveManagement: React.FC = () => {
                 </FormControl>
               </Grid>
             )}
-            <Grid item xs={6} sm={isAdmin ? 3 : 4}>
+            <Grid size={{ xs: 6, sm: isAdmin ? 3 : 4 }}>
               <FormControl fullWidth size="small">
                 <InputLabel>Status</InputLabel>
                 <Select value={filterStatus} label="Status" onChange={e => { setFilterStatus(e.target.value); setPage(1); }}>
@@ -222,7 +222,7 @@ const LeaveManagement: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6} sm={isAdmin ? 3 : 4}>
+            <Grid size={{ xs: 6, sm: isAdmin ? 3 : 4 }}>
               <TextField fullWidth size="small" label="Month" type="month"
                 value={filterMonth} onChange={e => { setFilterMonth(e.target.value); setPage(1); }}
                 slotProps={{ inputLabel: { shrink: true } }} />
@@ -355,7 +355,7 @@ const LeaveManagement: React.FC = () => {
 
       {/* Add/Edit Leave Dialog */}
       <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} maxWidth="sm" fullWidth
-        PaperProps={{ sx: { borderRadius: 3 } }}>
+        slotProps={{ paper: { sx: { borderRadius: 3 } } }}>
         <DialogTitle sx={{ fontWeight: 700, fontSize: 18, pb: 1 }}>
           {editingId ? 'Edit Leave' : 'Apply for Leave'}
           <Typography sx={{ fontSize: 13, color: '#94a3b8', fontWeight: 400 }}>
@@ -366,7 +366,7 @@ const LeaveManagement: React.FC = () => {
           {formError && <Alert severity="error" sx={{ mb: 2, borderRadius: 2 }}>{formError}</Alert>}
           <Grid container spacing={2.5}>
             {isAdmin && (
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <FormControl fullWidth>
                   <InputLabel>Staff Member *</InputLabel>
                   <Select value={form.staffId} label="Staff Member *" onChange={e => setForm({ ...form, staffId: e.target.value })}>
@@ -375,7 +375,7 @@ const LeaveManagement: React.FC = () => {
                 </FormControl>
               </Grid>
             )}
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth>
                 <InputLabel>Leave Type *</InputLabel>
                 <Select value={form.leaveType} label="Leave Type *" onChange={e => setForm({ ...form, leaveType: e.target.value })}>
@@ -385,7 +385,7 @@ const LeaveManagement: React.FC = () => {
             </Grid>
 
             {/* Half Day Toggle */}
-            <Grid item xs={12} sm={6} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid size={{ xs: 12, sm: 6 }} sx={{ display: 'flex', alignItems: 'center' }}>
               <FormControlLabel
                 control={
                   <Switch checked={form.isHalfDay} onChange={e => setForm({ ...form, isHalfDay: e.target.checked })}
@@ -402,7 +402,7 @@ const LeaveManagement: React.FC = () => {
 
             {/* Half Day Period Selection */}
             {form.isHalfDay && (
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Paper variant="outlined" sx={{ p: 2, borderRadius: 2, bgcolor: '#f8fafc', border: '1px solid #e2e8f0' }}>
                   <FormControl>
                     <FormLabel sx={{ fontSize: 13, fontWeight: 600, mb: 1, color: '#475569' }}>Select Half</FormLabel>
@@ -430,18 +430,18 @@ const LeaveManagement: React.FC = () => {
               </Grid>
             )}
 
-            <Grid item xs={12} sm={form.isHalfDay ? 12 : 6}>
+            <Grid size={{ xs: 12, sm: form.isHalfDay ? 12 : 6 }}>
               <TextField fullWidth label={form.isHalfDay ? 'Date *' : 'Start Date *'} type="date" value={form.startDate}
                 onChange={e => setForm({ ...form, startDate: e.target.value })} slotProps={{ inputLabel: { shrink: true } }} />
             </Grid>
             {!form.isHalfDay && (
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField fullWidth label="End Date *" type="date" value={form.endDate}
                   onChange={e => setForm({ ...form, endDate: e.target.value })} slotProps={{ inputLabel: { shrink: true } }} />
               </Grid>
             )}
             {isAdmin && (
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <FormControl fullWidth>
                   <InputLabel>Status</InputLabel>
                   <Select value={form.status} label="Status" onChange={e => setForm({ ...form, status: e.target.value })}>
@@ -452,7 +452,7 @@ const LeaveManagement: React.FC = () => {
                 </FormControl>
               </Grid>
             )}
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TextField fullWidth label="Reason" multiline rows={3} value={form.reason}
                 onChange={e => setForm({ ...form, reason: e.target.value })}
                 placeholder="Brief reason for leave (optional)" />
@@ -470,7 +470,7 @@ const LeaveManagement: React.FC = () => {
 
       {/* Delete Confirm */}
       <Dialog open={deleteDialogOpen} onClose={() => setDeleteDialogOpen(false)} maxWidth="xs" fullWidth
-        PaperProps={{ sx: { borderRadius: 3 } }}>
+        slotProps={{ paper: { sx: { borderRadius: 3 } } }}>
         <DialogTitle sx={{ fontWeight: 700 }}>Delete Leave Record?</DialogTitle>
         <DialogContent>
           <Typography sx={{ color: '#475569' }}>This will permanently delete the leave record. This action cannot be undone.</Typography>

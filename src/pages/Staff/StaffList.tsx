@@ -4,7 +4,7 @@ import {
   TableCell, TableContainer, TableHead, TableRow, Chip, IconButton,
   TextField, InputAdornment, Select, MenuItem, FormControl, InputLabel,
   Dialog, DialogTitle, DialogContent, DialogActions, Grid, Alert,
-  Pagination, Stack, Skeleton, Tooltip, Avatar,
+  Pagination, Skeleton, Tooltip, Avatar,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
@@ -94,13 +94,13 @@ const StaffList: React.FC = () => {
       {/* Filters */}
       <Card sx={{ mb: 2 }}>
         <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} sm={5}>
+          <Grid container spacing={2} sx={{ alignItems: 'center' }}>
+            <Grid size={{ xs: 12, sm: 5 }}>
               <TextField fullWidth size="small" placeholder="Search name or email…" value={search}
                 onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-                InputProps={{ startAdornment: <InputAdornment position="start"><SearchIcon sx={{ color: '#94a3b8' }} /></InputAdornment> }} />
+                slotProps={{ input: { startAdornment: <InputAdornment position="start"><SearchIcon sx={{ color: '#94a3b8' }} /></InputAdornment> } }} />
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid size={{ xs: 6, sm: 3 }}>
               <FormControl fullWidth size="small">
                 <InputLabel>Department</InputLabel>
                 <Select value={department} label="Department" onChange={(e) => { setDepartment(e.target.value); setPage(1); }}>
@@ -109,7 +109,7 @@ const StaffList: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid size={{ xs: 6, sm: 3 }}>
               <FormControl fullWidth size="small">
                 <InputLabel>Status</InputLabel>
                 <Select value={status} label="Status" onChange={(e) => { setStatus(e.target.value); setPage(1); }}>
@@ -199,16 +199,16 @@ const StaffList: React.FC = () => {
         <DialogContent sx={{ pt: 2 }}>
           {formError && <Alert severity="error" sx={{ mb: 2 }}>{formError}</Alert>}
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TextField fullWidth label="Full Name *" value={form.fullName} onChange={e => setForm({ ...form, fullName: e.target.value })} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField fullWidth label="Email *" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField fullWidth label="Phone" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth>
                 <InputLabel>Department</InputLabel>
                 <Select value={form.department} label="Department" onChange={e => setForm({ ...form, department: e.target.value })}>
@@ -216,7 +216,7 @@ const StaffList: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth>
                 <InputLabel>Role/Designation</InputLabel>
                 <Select value={form.role} label="Role/Designation" onChange={e => setForm({ ...form, role: e.target.value })}>
@@ -224,12 +224,12 @@ const StaffList: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField fullWidth label="Date of Joining" type="date" value={form.dateOfJoining}
                 onChange={e => setForm({ ...form, dateOfJoining: e.target.value })}
                 slotProps={{ inputLabel: { shrink: true } }} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth>
                 <InputLabel>Status</InputLabel>
                 <Select value={form.status} label="Status" onChange={e => setForm({ ...form, status: e.target.value })}>
@@ -238,7 +238,7 @@ const StaffList: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth>
                 <InputLabel>User Role</InputLabel>
                 <Select value={form.userRole} label="User Role" onChange={e => setForm({ ...form, userRole: e.target.value })}>
@@ -247,7 +247,7 @@ const StaffList: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField fullWidth label={editingId ? 'New Password (leave blank to keep)' : 'Password'} type="password"
                 value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
             </Grid>
