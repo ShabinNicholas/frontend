@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Box, Grid, Card, CardContent, Typography, CircularProgress,
+  Box, Grid, Card, CardContent, Typography,
   Avatar, Skeleton,
 } from '@mui/material';
 import PeopleIcon from '@mui/icons-material/People';

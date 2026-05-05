@@ -69,7 +69,7 @@ const Layout: React.FC = () => {
                 }}
               >
                 <ListItemIcon sx={{ color: active ? '#ea580c' : '#475569', minWidth: 36 }}>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.label} primaryTypographyProps={{ fontSize: 14, fontWeight: active ? 700 : 500, color: active ? '#000000' : '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }} />
+                <ListItemText primary={item.label} slotProps={{ primary: { sx: { fontSize: 14, fontWeight: active ? 700 : 500, color: active ? '#000000' : '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' } } }} />
               </ListItemButton>
             </ListItem>
           );

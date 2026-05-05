@@ -5,7 +5,7 @@ import { Box, CircularProgress } from '@mui/material';
 
 const ProtectedRoute: React.FC = () => {
   const { token, loading } = useAuth();
-  if (loading) return <Box display="flex" justifyContent="center" alignItems="center" height="100vh"><CircularProgress /></Box>;
+  if (loading) return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}><CircularProgress /></Box>;
   return token ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
